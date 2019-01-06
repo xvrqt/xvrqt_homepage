@@ -1,2 +1,0 @@
-var webp_support=!1;!function(){var e=new Image,o=document.getElementsByClassName("webp_q");function t(e){for(var o=0;o<e.length;o++){var t=e.item(o);t.classList.remove("webp_q"),webp_support?t.classList.add("webp"):t.classList.add("no-webp")}}e.onload=function(){webp_support=!!(0<e.height&&0<e.width),t(o)},e.onerror=function(){webp_support=!1,t(o)},e.src="img/logo.webp"}();
-//# sourceMappingURL=maps/main.js.map
