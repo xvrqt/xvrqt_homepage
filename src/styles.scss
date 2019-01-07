@@ -4,20 +4,6 @@
 $container-max-width: 414px;
 $container-min-width: 320px;
 
-/* Stuttering rotation animation */
-@keyframes stutter {
-  0%  { transform: rotateY(0); }
-  10% { transform: rotateY(5deg); }
-  20% { transform: rotateY(10deg); }
-  30% { transform: rotateY(7deg); }
-  40% { transform: rotateY(0deg); }
-  50% { transform: rotateY(5deg); }
-  60% { transform: rotateY(2deg); }
-  70% { transform: rotateY(7deg); }
-  80% { transform: rotateY(9deg); }
-  90% { transform: rotateY(5deg); }
-}
-
 /* Blends and rotates these colores around an image's alpha mask */
 $color-row-1: #35327f #472f7a #5d2d7b #742a77 #982676 #ad2275 #d31674 #df1074;
 $color-row-2: #224887 #3c4787 #514887 #6e4786 #954783 #c14384 #c04484 #d84083;
