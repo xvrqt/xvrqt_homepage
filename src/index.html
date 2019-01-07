@@ -3,8 +3,8 @@
 
   <head>
     <!-- Title and Description -->
-    <title>TypeScript Web App Starter Pack</title>
-    <meta name="description" content="A TypeScript, SCSS, framework agnostic website starter template.">
+    <title>xvrqt</title>
+    <meta name="description" content="XVRQT">
 
     <!-- How to display the page -->
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <!-- Microsoft specific meta data -->
     <meta name="msapplication-config" content="/icons/browserconfig.xml">
     <meta name="msapplication-TileColor" content="#DA532C">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#202020">
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -31,50 +31,36 @@
     <!-- livereload.js will be injected here if this is a dev build -->
     <!-- endinject -->
 
+    <!-- Our single style sheet -->
+    <link rel="stylesheet" href="styles.css">
+
     <!-- Removes the "no-js" element from the <html> tag if JS is present. -->
     <script>
       document.documentElement.classList.remove("no-js");
     </script>
-
-    <!-- Our single style sheet -->
-    <link rel="stylesheet" href="styles.css">
   </head>
 
-  <body>
+  <body class="screen crt webp_q">
     <div class="container">
+      <!-- Header image -->
       <picture>
-        <source srcset="img/amy.webp 1x" type="image/webp" />
-        <source srcset="img/amy.png 1x"  type="image/png" />
-        <img src="img/amy.png" class="logo" alt="A portrait of the maintaner of Typescript Web App Starter" />
+        <source srcset="img/logo.webp 1x" type="image/webp" />
+        <source srcset="img/logo.png 1x"  type="image/png" />
+        <img src="img/logo.png" class="logo" alt="Alt Text!" />
       </picture>
-      <div id="text">
-        <h1>Hello, World!</h1>
-        <hr />
-        <p>If you're reading this, TypeScript Web App Template is working!</p>
-      </div>
 
-      <!-- Links to the Git Repository -->
-      <div class="git">
-        <a href="https://git.xvrqt.com/amy/typescript-web-app-template">
-          <picture>
-            <source srcset="img/gitlab.webp 1x" type="image/webp" />
-            <source srcset="img/gitlab.png 1x"  type="image/png" />
-            <img src="img/gitlab.png" class="logo" alt="GitLab Logo" />
-          </picture>
-          <h3>GitLab</h3>
-        </a>
-      </div>
-
-      <div class="git">
-        <a href="https://github.com/xvrqt/TypeScript-Web-App-Template">
-          <picture>
-            <source srcset="img/github.webp 1x" type="image/webp" />
-            <source srcset="img/github.png 1x"  type="image/png" />
-            <img src="img/github.png" class="logo" alt="GitHub Logo" />
-          </picture>
-          <h3>GitHub</h3>
-        </a>
-      </div>
+      <!-- Text Logo -->
+      <picture>
+        <source srcset="img/title/xvrqt@1x.webp 1x, 
+                        img/title/xvrqt@2x.webp 1.25x, 
+                        img/title/xvrqt@3x.webp 2.25x"
+                type="image/webp" />
+        <source srcset="img/title/xvrqt@1x.png 1x, 
+                        img/title/xvrqt@2x.png 1.25x, 
+                        img/title/xvrqt@3x.png 2.25x" 
+                type="image/png" />
+        <img src="img/title/xvrqt@3x.png" class="title" alt="Alt Text!" />
+      </picture>
     </div>
 
     <!-- Our single JS script -->

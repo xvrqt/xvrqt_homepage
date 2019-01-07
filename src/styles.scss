@@ -1,95 +1,99 @@
-@import "styles/reset";
-@import "styles/variables";
-@import "styles/404";
+@import "styles/utility";
+@import "styles/crt";
 
+$container-max-width: 414px;
+$container-min-width: 320px;
+
+/* Stuttering rotation animation */
+@keyframes stutter {
+  0%  { transform: rotateY(0); }
+  10% { transform: rotateY(5deg); }
+  20% { transform: rotateY(10deg); }
+  30% { transform: rotateY(7deg); }
+  40% { transform: rotateY(0deg); }
+  50% { transform: rotateY(5deg); }
+  60% { transform: rotateY(2deg); }
+  70% { transform: rotateY(7deg); }
+  80% { transform: rotateY(9deg); }
+  90% { transform: rotateY(5deg); }
+}
+
+/* Blends and rotates these colores around an image's alpha mask */
+$color-row-1: #35327f #472f7a #5d2d7b #742a77 #982676 #ad2275 #d31674 #df1074;
+$color-row-2: #224887 #3c4787 #514887 #6e4786 #954783 #c14384 #c04484 #d84083;
+$color-row-2r: reverse($color-row-2);
+@keyframes surreal {
+	$c_len: length($color-row-1);
+	$num_frames: 32;
+	@for $i from 0 through $num_frames {
+		$rad_step: $i * ((2 * $pi) / $c_len);
+		#{percentage($i * (1 / $c_len))} {
+	      filter: drop-shadow(2 * cos($rad_step) + px 2 * sin($rad_step) + px 3px nth($color-row-1, ($i % $c_len) + 1))
+	              drop-shadow(2 * cos($rad_step + $pi) + px 2 * sin($rad_step + $pi) + px 3px nth($color-row-2r, ($i % $c_len) + 1));
+	    }
+	}
+}
+
+html {
+	height: 1px;
+}
+
+html, body {
+	min-height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Detect if WebP support is available to pick which background image to load */
 body {
-	background-color: $background-color;
+	background-color: #202020;
+	&.no-webp {
+		background: url(img/bg.png);
+		@media only screen and (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+			background: url(img/bg@2X.png);
+		}
+	}
+
+	&.webp {
+		background: url(img/bg.webp);
+		@media only screen and (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+			background: url(img/bg@2X.webp);
+		}
+	}
 }
 
 .container {
+	margin: 0 auto;
+	padding: 5px;
+	display: block;
+
+	box-sizing: border-box;
+
 	width: 100%;
 	max-width: $container-max-width;
 	min-width: $container-min-width;
 
-	height: 100%;
-
-	margin: 0px auto;
-	padding: 25px 10px;
-	box-sizing: border-box; // Uses the padding in width calculations
-
-	color: $font-color;
-	text-align: center;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
 	img {
-		width: $img-width;
-
-		margin: 0px auto;
+		width: 75%;
+		margin: 0 auto;
 		display: block;
-		box-sizing: border-box; // Uses the border weight in width calculations
 
-		border: $img-border-width #FFF solid;
-		border-radius: 25%;
-	}
+		/* Image logo */
+		&.logo {
+			animation: surreal 3s linear infinite;
+			animation-fill-mode: both;
+	    }
 
-	#text {
-		width: $img-width;
-		margin: 10px auto;
+	    /* XVRQT text logo/title */
+		&.title {
+			width: 100%;
+			margin: 5px auto;
 
-		h1 {
-			color: #EEE;
-			margin: 25px auto 0px auto;
-		}
-
-		hr {
-			border: 1px #B9DADA solid;
-			opacity: 0.5;
-		}
-
-		p {
-			margin: 10px auto 30px auto;
-			text-align: center;
+			filter: drop-shadow(1px 1px 3px #df1074)
+	        drop-shadow(-1px -1px 3px #047ba5);
 		}
 	}
 
-	.git {
-		width: 150px;
-		height: 50px;
-
-		margin: 10px auto;
-		padding: 5px;
-
-		border-radius: 10px;
-		// border-color: #DDD;
-
-		a {
-			text-decoration: none;
-			color: #222;
-
-			font-size: 1.25em;
-		}
-
-		img {
-			width: 50px;
-			height: 100%;
-
-			float: left;
-			border: none;
-		}
-
-		h3 {
-			float: left;
-			margin-top: calc(25px - 0.625em);
-			margin-left: 15px;
-		}
-	}
-}
-
-/* Set the background based on WebP support */
-.no-webp .git {
-	background: url(img/git_bg.png);
-}
-
-.webp .git {
-	background: url(img/git_bg.webp);
+	
 }
