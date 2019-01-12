@@ -1,37 +1,40 @@
 @import "styles/utility";
 @import "styles/crt";
 
-$container-max-width: 414px;
-$container-min-width: 320px;
-
-/* Blends and rotates these colores around an image's alpha mask */
+/* Blends and rotates these colors around an image's alpha mask. Gives the image
+ * a flickering, otherworldy glow.
+ * DEPENDS: utility.scss
+ *  -- For the trigometric functions that calculate the shadow offset in a 
+ *  -- clockwise manner.
+*/
 $color-row-1: #35327f #472f7a #5d2d7b #742a77 #982676 #ad2275 #d31674 #df1074;
 $color-row-2: #224887 #3c4787 #514887 #6e4786 #954783 #c14384 #c04484 #d84083;
 $color-row-2r: reverse($color-row-2);
 @keyframes surreal {
-	$c_len: length($color-row-1);
-	$num_frames: 32;
-	@for $i from 0 through $num_frames {
-		$rad_step: $i * ((2 * $pi) / $c_len);
-		#{percentage($i * (1 / $c_len))} {
-	      filter: drop-shadow(2 * cos($rad_step) + px 2 * sin($rad_step) + px 3px nth($color-row-1, ($i % $c_len) + 1))
-	              drop-shadow(2 * cos($rad_step + $pi) + px 2 * sin($rad_step + $pi) + px 3px nth($color-row-2r, ($i % $c_len) + 1));
-	    }
-	}
+  $c_len: length($color-row-1);
+  $num_frames: 32;
+  @for $i from 0 through $num_frames {
+    $rad_step: $i * ((2 * $pi) / $c_len);
+    #{percentage($i * (1 / $c_len))} {
+        filter: drop-shadow(2 * cos($rad_step) + px 2 * sin($rad_step) + px 3px nth($color-row-1, ($i % $c_len) + 1))
+                drop-shadow(2 * cos($rad_step + $pi) + px 2 * sin($rad_step + $pi) + px 3px nth($color-row-2r, ($i % $c_len) + 1));
+      }
+  }
 }
 
-html {
-	height: 1px;
-}
-
+/* This page is meant to take up the entire viewport. Vertical scrolling 
+ * optional for ver small devices. (They should be viewing the static page).
+*/
 html, body {
-	min-height: 100%;
 	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+
 	margin: 0px;
 	padding: 0px;
 }
 
-/* Detect if WebP support is available to pick which background image to load */
+/* Detect if WebP support is available to pick which background image to load. */
 body {
 	background-color: #202020;
 	&.no-webp {
@@ -49,37 +52,65 @@ body {
 	}
 }
 
+/* Allow for minor scaling depending on screen size */
+$container-max-width: 414px;
+$container-min-width: 320px;
+
+/*Centered column to hold the content */
 .container {
 	margin: 0 auto;
-	padding: 5px;
+	padding: 5px 0;
 	display: block;
-
-	box-sizing: border-box;
 
 	width: 100%;
 	max-width: $container-max-width;
 	min-width: $container-min-width;
 
+	/* Images should be constrained to the width of the container. */
 	img {
-		width: 75%;
-		margin: 0 auto;
-		display: block;
-
-		/* Image logo */
-		&.logo {
-			animation: surreal 3s linear infinite;
-			animation-fill-mode: both;
-	    }
+		max-width: 100%;
 
 	    /* XVRQT text logo/title */
 		&.title {
-			width: 100%;
-			margin: 5px auto;
+			
+		}
+	}
 
+	/* Wrapper div adds the glitching scanline effect. */
+	.logo-glitch {
+		/* Required to make the absolute positioning of the duplicate images
+		 * work.
+		*/
+		position: relative;
+
+		/* Image should fit inside the viewport at all times */
+		max-height: 100vh;
+		
+		/* Generates the actual glitch effect.
+		 * DEPENDS: crt.scss
+	    */
+		@include glitch("logo-glitch", 300, 600, 2);
+		
+		/* Add the surreal image effect to one of the logo images. */
+		picture:nth-child(1) img {
+			animation: surreal 3s linear infinite;
+			animation-fill-mode: both;
+		}
+	}
+
+	/* Class added to the wrapping <picture> tag for positioning. */
+	.title {
+		/* This puts it around breast height. */
+		top: -25vh;
+		display: block;
+		position: relative;
+
+		img {
+			width: 100%;
+
+			/* Distorted retro 3D effect, changed to fit color scheme. */
 			filter: drop-shadow(1px 1px 3px #df1074)
 	        drop-shadow(-1px -1px 3px #047ba5);
 		}
 	}
-
-	
 }
