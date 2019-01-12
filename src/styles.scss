@@ -73,11 +73,6 @@ $container-min-width: 320px;
 	/* Images should be constrained to the width of the container. */
 	img {
 		max-width: 100%;
-
-	    /* XVRQT text logo/title */
-		&.title {
-			
-		}
 	}
 
 	/* Wrapper div adds the glitching scanline effect. */
@@ -105,16 +100,15 @@ $container-min-width: 320px;
 	/* Class added to the wrapping <picture> tag for positioning. */
 	.title {
 		/* This puts it around breast height. */
-		top: -15vh;
+		top: 60%;
+		width: 100%;
 		display: block;
-		position: relative;
+		position: absolute;
 
 		img {
-			width: 100%;
-
 			/* Distorted retro 3D effect, changed to fit color scheme. */
 			filter: drop-shadow(1px 1px 3px #df1074)
-	        drop-shadow(-1px -1px 3px #047ba5);
+	        		drop-shadow(-1px -1px 3px #047ba5);
 		}
 	}
 }
@@ -124,3 +118,4 @@ $container-min-width: 320px;
  *********/
 
 @import "styles/404";
+@import "styles/simple";
