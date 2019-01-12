@@ -1,6 +1,8 @@
 @import "styles/utility";
 @import "styles/crt";
 
+/* Additional imports at the end of this document for the 404 page. */
+
 /* Blends and rotates these colors around an image's alpha mask. Gives the image
  * a flickering, otherworldy glow.
  * DEPENDS: utility.scss
@@ -11,15 +13,15 @@ $color-row-1: #35327f #472f7a #5d2d7b #742a77 #982676 #ad2275 #d31674 #df1074;
 $color-row-2: #224887 #3c4787 #514887 #6e4786 #954783 #c14384 #c04484 #d84083;
 $color-row-2r: reverse($color-row-2);
 @keyframes surreal {
-  $c_len: length($color-row-1);
-  $num_frames: 32;
-  @for $i from 0 through $num_frames {
-    $rad_step: $i * ((2 * $pi) / $c_len);
-    #{percentage($i * (1 / $c_len))} {
-        filter: drop-shadow(2 * cos($rad_step) + px 2 * sin($rad_step) + px 3px nth($color-row-1, ($i % $c_len) + 1))
-                drop-shadow(2 * cos($rad_step + $pi) + px 2 * sin($rad_step + $pi) + px 3px nth($color-row-2r, ($i % $c_len) + 1));
-      }
-  }
+	$c_len: length($color-row-1);
+	$num_frames: 32;
+	@for $i from 0 through $num_frames {
+		$rad_step: $i * ((2 * $pi) / $c_len);
+		#{percentage($i * (1 / $c_len))} {
+		    filter: drop-shadow(2 * cos($rad_step) + px 2 * sin($rad_step) + px 3px nth($color-row-1, ($i % $c_len) + 1))
+		            drop-shadow(2 * cos($rad_step + $pi) + px 2 * sin($rad_step + $pi) + px 3px nth($color-row-2r, ($i % $c_len) + 1));
+		}
+	}
 }
 
 /* This page is meant to take up the entire viewport. Vertical scrolling 
@@ -114,3 +116,9 @@ $container-min-width: 320px;
 		}
 	}
 }
+
+/*********
+ * PAGES *
+ *********/
+
+@import "styles/404";
