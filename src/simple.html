@@ -4,7 +4,8 @@
   <head>
     <!-- Title and Description -->
     <title>xvrqt</title>
-    <meta name="description" content="XVRQT">
+    <meta name="description" content="XVRQT - No animations edition">
+    <link rel="canonical" href="https://xvrqt.com" />
 
     <!-- How to display the page -->
     <meta charset="utf-8">
@@ -51,31 +52,14 @@
     </script>
   </head>
 
-  <body class="screen flicker scanlines webp_q">
+  <body id="simple" class="scanlines webp_q">
     <div class="container"> 
       <!-- Header image -->
-      <div class="logo-glitch">
-        <picture>
-          <source srcset="img/xvrqt.webp 1x" type="image/webp" />
-          <source srcset="img/xvrqt.png 1x"  type="image/png" />
-          <img src="img/xvrqt.png" class="surreal" alt="Torn, armless torso of a gynoid staring at viewer" />
-        </picture>
-        <picture>
-          <source srcset="img/xvrqt.webp 1x" type="image/webp" />
-          <source srcset="img/xvrqt.png 1x"  type="image/png" />
-          <img src="img/xvrqt.png" />
-        </picture>
-        <picture>
-          <source srcset="img/xvrqt.webp 1x" type="image/webp" />
-          <source srcset="img/xvrqt.png 1x"  type="image/png" />
-          <img src="img/xvrqt.png" />
-        </picture>
-        <picture>
-          <source srcset="img/xvrqt.webp 1x" type="image/webp" />
-          <source srcset="img/xvrqt.png 1x"  type="image/png" />
-          <img src="img/xvrqt.png" />
-        </picture>
-      </div>
+      <picture class="glow">
+        <source srcset="img/xvrqt.webp 1x" type="image/webp" />
+        <source srcset="img/xvrqt.png 1x"  type="image/png" />
+        <img src="img/xvrqt.png" alt="Torn, armless torso of a gynoid staring at viewer" />
+      </picture>
 
       <!-- Text Logo -->
       <picture class="title">

@@ -93,7 +93,7 @@ $crt-color-3: #007DA5;
 }
 
 /* Wrapper div to apply the CRT screen effect */
-.crt {
+.flicker {
   position: relative;
 
     /* Flicker Effect */
@@ -115,8 +115,11 @@ $crt-color-3: #007DA5;
 
         animation: flicker $crt-flicker-period infinite;
     }
+}
 
-    /* Scanlines */
+.scanlines {
+    position: relative;
+
     &::before {
         content: " ";
 
