@@ -1,52 +1,90 @@
 /* Adds a grainy, scanline esque look to the contents of .container.
  * Optional flickering if your into that/really hate your users.
+ *
+ * Add the class "screen" to a tag to have it simulate a CRT monitor
+ * turning on when the element loads.
+ *
+ * Add the class "crt" to a tag to have it simulate the scanline and flicker 
+ * effect.
+ * 
+ * Add the class "glitch" to a set of 4 images to add a scanline glitch effect.
 */
 
+/*************
+ * VARIABLES *
+ *************/
+
+/* All variables prefixed with "crt-" to help avoid conflicts. */
+
+/* Used to calclute the coore for the flicker and scanlines.
+ * SUGGESTED: A dark color of your choice. Think #333 ;
+*/
+$crt-screen-background:#202020;
 $screen-background:#202020;
 
-/* Simulates a CRT screen turning on */
-@keyframes turn-on{
-  0%{
-    transform: scale(1,0.8) translate3d(0,0,0);
-    filter: brightness(30);
-    opacity: 1;
-  }
-  3.5%{
-    transform: scale(1,0.8) translate3d(0,100%,0);
-  }
-  
-  3.6%{
-    transform: scale(1,0.8) translate3d(0,-100%,0);
-    opacity: 1;
-  } 
-  
-  9%{
-    transform: scale(1.3,0.6) translate3d(0,100%,0);
-    filter: brightness(30);
-    opacity: 0.1;
-  }
-  
-  11%{
-    transform: scale(1,1) translate3d(0,0,0);
-    filter: contrast(0) brightness(0);
-    opacity: 0;
-  }
-  
-  100%{
-    transform: scale(1,1) translate3d(0,0,0);
-    filter: contrast(1) brightness(1) saturate(1);
-    opacity: 1;
-  }
-}
+/* How many distinct flicker states you wish to see. No point in changing this.
+ * If you do, scale it with flicker-period. A low period and high number states
+ * means a very fast flicker. 
+ * i.e. Hz = $flicker-states / $flicker-period
+*/
+$crt-flicker-states: 50;
+$crt-flicker-period: 2s;
+
+/* Color for the faux RGB bleed.
+ * SUGGESTED: Standaed RGB (#FF0000. #00FF00, #0000FF)
+*/
+
+$crt-color-1: #DF1074;
+$crt-color-2: #6E4786;
+$crt-color-3: #007DA5;
+
+/**************
+ * ANIMATIONS *
+ **************/
 
 /* Flicker animation */
 @keyframes flicker {
-  $steps: 20;
-  @for $i from 0 through $steps {
-    #{percentage($i * (1 / $steps))} {
-      opacity: random(); // "random()" is pre-processed and fixed after building
+    $steps: $crt-flicker-states;
+    @for $i from 0 through $steps {
+        #{percentage($i * (1 / $steps))} {
+          opacity: random();
+        }
     }
-  }
+}
+
+/* Simulates a CRT screen turning on. */
+@keyframes turn-on{
+    0%{
+        transform: scale(1, 0.8) translate3d(0, 0, 0);
+        filter: brightness(30);
+        opacity: 1;
+    }
+    3.5%{
+        transform: scale(1, 0.8) translate3d(0, 100%, 0);
+    }
+
+    3.6%{
+        transform: scale(1, 0.8) translate3d(0, -100%, 0);
+        opacity: 1;
+    } 
+
+    9%{
+        transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+        filter: brightness(30);
+        opacity: 0.1;
+    }
+
+    11%{
+        transform: scale(1, 1) translate3d(0, 0, 0);
+        filter: contrast(0) brightness(0);
+        opacity: 0;
+    }
+
+    100%{
+        transform: scale(1, 1) translate3d(0, 0, 0);
+        filter: contrast(1) brightness(1) saturate(1);
+        opacity: 1;
+    }
 }
 
 .screen {
@@ -58,34 +96,118 @@ $screen-background:#202020;
 .crt {
   position: relative;
 
-  /* Flicker Effect */
-  &::after{
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: transparentize($screen-background,0.9);
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-    animation: flicker 0.015s infinite;
-  }
+    /* Flicker Effect */
+    &::after {
+        content: " ";
 
-  /* Scanlines */
-  &::before{
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(transparentize($screen-background,1) 50%, transparentize(darken($screen-background,10),0.75) 50%), linear-gradient(90deg,transparentize(#df1074,0.94),transparentize(#6e4786,0.98),transparentize(#007da5,0.94));
-    z-index: 2;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-  }
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        z-index: 2;
+        display: block;
+        position: absolute;
+
+        pointer-events: none;
+
+        background: transparentize($crt-screen-background,0.9);
+
+        animation: flicker $crt-flicker-period infinite;
+    }
+
+    /* Scanlines */
+    &::before {
+        content: " ";
+
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        display: block;
+        position: absolute;
+
+        pointer-events: none;
+
+        /* First linear gradient is the scanlines; second is the RGB bleed. */
+        background: linear-gradient(transparentize($crt-screen-background, 1) 50%, 
+                                    transparentize(darken($crt-screen-background, 10), 0.75) 50%), 
+                    linear-gradient(90deg, 
+                                    transparentize($crt-color-1, 0.94), 
+                                    transparentize($crt-color-2, 0.98), 
+                                    transparentize($crt-color-3, 0.94));
+        background-size: 100% 2px, 3px 100%;
+    }
+}
+
+/* Adds the image "glitch" effect (badly attenuated scan lines) to an image.
+ * Requires that you quadruple the image.
+ * $name: name of wrapper div the images are in
+ * $frames: how many distinct states to render before repeating
+ * $duration: how long to take to traverse the number of states in $period
+ *  -- i.e. fps = $frames / $duration
+ * $ waggle: how far the 'glitch' should distort the image horizontally.
+*/
+@mixin glitch($name, $frames, $duration, $waggle) {
+  
+  $steps: $frames;
+  /* Animations must be generated at the root */
+    @at-root {
+        /* Waggle left and waggle right */
+        @for $i from 1 through 2 {
+            @keyframes #{$name}-anim-#{$i} {
+                @for $i from 0 through $steps {
+                    #{percentage($i * (1 / $steps))} {
+                        $height-1: random(100)/100;
+                        $height-2: random(100)/100;
+
+                        /* Select a random area to waggle */
+                        clip-path: polygon(
+                            0 percentage($height-1),
+                            100% percentage($height-1),
+                            100% percentage($height-2),
+                            0 percentage($height-2)
+                        );
+
+                        /* Otherwise it doesn't work on iOS */
+                        -webkit-clip-path: polygon(
+                            0 percentage($height-1),
+                            100% percentage($height-1),
+                            100% percentage($height-2),
+                            0 percentage($height-2)
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    /* Center the images in the div */
+    > picture img {
+        top: 0;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+    }
+
+    /* Offset to the right */
+    picture:nth-child(2) img {
+        left: calc(50% + #{$waggle}px);
+        animation: #{$name}-anim-1 #{$duration}s infinite linear alternate-reverse;
+    }
+
+    /* Offset to the left */
+    picture:nth-child(3) img {
+        left: calc(50% - #{$waggle}px);
+        animation: #{$name}-anim-2 #{$duration}s infinite linear alternate-reverse;
+    }
+
+    /* Used to size the parent correctly. */
+    picture:nth-child(4) img {
+        opacity: 0;
+        display: block;
+        position: static;
+        transform: none;
+    }
 }
