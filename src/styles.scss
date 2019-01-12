@@ -64,6 +64,8 @@ $container-min-width: 320px;
 	padding: 5px 0;
 	display: block;
 
+	position: relative;
+
 	width: 100%;
 	max-width: $container-max-width;
 	min-width: $container-min-width;
@@ -103,7 +105,7 @@ $container-min-width: 320px;
 	/* Class added to the wrapping <picture> tag for positioning. */
 	.title {
 		/* This puts it around breast height. */
-		top: -25vh;
+		top: -15vh;
 		display: block;
 		position: relative;
 

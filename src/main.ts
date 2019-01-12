@@ -32,5 +32,5 @@ let webp_support = false;
     webp_class(webp_elements);
   };
 
-  img.src = "img/logo.webp";
+  img.src = "img/test_pixel.webp";
 })();
