@@ -10,8 +10,7 @@
  *  -- clockwise manner.
 */
 $color-row-1: #35327f #472f7a #5d2d7b #742a77 #982676 #ad2275 #d31674 #df1074;
-$color-row-2: #224887 #3c4787 #514887 #6e4786 #954783 #c14384 #c04484 #d84083;
-$color-row-2r: reverse($color-row-2);
+$color-row-2: #d84083 #c04484 #c14384 #954783 #6e4786 #514887 #3c4787 #224887;
 @keyframes surreal {
 	$c_len: length($color-row-1);
 	$num_frames: 32;
