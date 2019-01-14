@@ -18,7 +18,7 @@ $color-row-2: #d84083 #c04484 #c14384 #954783 #6e4786 #514887 #3c4787 #224887;
 		$rad_step: $i * ((2 * $pi) / $c_len);
 		#{percentage($i * (1 / $c_len))} {
 		    filter: drop-shadow(2 * cos($rad_step) + px 2 * sin($rad_step) + px 3px nth($color-row-1, ($i % $c_len) + 1))
-		            drop-shadow(2 * cos($rad_step + $pi) + px 2 * sin($rad_step + $pi) + px 3px nth($color-row-2r, ($i % $c_len) + 1));
+		            drop-shadow(2 * cos($rad_step + $pi) + px 2 * sin($rad_step + $pi) + px 3px nth($color-row-2, ($i % $c_len) + 1));
 		}
 	}
 }
