@@ -5,6 +5,9 @@ Includes the home pages and a 404 page.
 
 **Upstreamm:** https://git.xvrqt.com/amy/typescript-web-app-template
 
+## Demo
+[https://web-starter.xvrqt.com](https://web-starter.xvrqt.com)
+
 ## Quick Start
 1. Clone the repositiory: `git clone git@git.xvrqt.com:xvrqt/homepage.git`
 2. Install the dependencies: `npm install`

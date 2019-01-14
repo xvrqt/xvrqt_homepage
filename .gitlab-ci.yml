@@ -11,8 +11,9 @@ cache:
 
 build:
   stage: build
+  tags:
+    - docker
   script:
-    - echo "Testing if the app builds"
     - npm install
     - npm run build
   artifacts:
@@ -21,9 +22,15 @@ build:
       
 deploy_staging:
   stage: deploy
+  tags:
+    - shell
   script:
-    - echo "Deploying to staging server"
+    - mkdir -p /var/www/homepage
+    - mkdir -p /etc/nginx/sites-enabled
+    - cp nginx.dev.conf /etc/nginx/sites-enabled/homepage
     - cp -r dist/* /var/www/homepage/
+    - sudo nginx -t
+    - sudo /etc/init.d/nginx reload
   environment:
     name: staging
     url: https://stg.xvrqt.com
@@ -32,13 +39,15 @@ deploy_staging:
   
 deploy_production:
   stage: deploy
+  tags:
+    - shell
   script:
-    - echo "Deploying to production server"
-    - scp -r dist/* root@static-01:/var/www/homepage
+    - scp -p nginx.prod.conf root@static-01:/etc/nginx/sites-enabled/homepage
+    - scp -pr dist root@static-01:/var/www/homepage
+    - ssh root@static-01 'nginx -t && service nginx reload'
   environment:
     name: production
     url: https://xvrqt.com
   when: manual
   only:
   - tags
-
