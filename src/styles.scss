@@ -87,7 +87,7 @@ $container-min-width: 320px;
 		/* Generates the actual glitch effect.
 		 * DEPENDS: crt.scss
 	    */
-		@include glitch("logo-glitch", 300, 600, 2);
+		@include glitch("logo-glitch", 50, 100, 2);
 		
 		/* Add the surreal image effect to one of the logo images. */
 		picture:nth-child(1) img {
