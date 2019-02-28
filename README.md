@@ -1,22 +1,19 @@
 # XVRQT Homepage
 Simple, static homepage for the xvrqt.com root domain.
 
-Includes the home pages and a 404 page.
+Includes the home page, a simple page with less animations and a 404 page.
 
-**Upstreamm:** https://git.xvrqt.com/amy/typescript-web-app-template
+## Building
+To build the project into the dist/ directory run:
+```bash
+npm run build
+```
 
-## Demo
-[https://web-starter.xvrqt.com](https://web-starter.xvrqt.com)
-
-## Quick Start
-1. Clone the repositiory: `git clone git@git.xvrqt.com:xvrqt/homepage.git`
-2. Install the dependencies: `npm install`
-3. Start the dev container: `docker-compose up ts-web-app-dev` **OR** Start an Express server: `npm run serve local`
-4. Open a browser, and navigate to: `http://localhost:8080`
-5. Make a change to a file in `src/` your changes should be reflected immediately in the browser.
-6. Build your web app/site!
-7. Create a production ready container: `docker-compose up ts-web-app`
-8. Navigate to: `http://localhost`
+## Testing
+To run a development server at http://localhost:8080 run:
+```bash
+npm run serve
+```
 
 ## Deploying
 Any commit to master deploys to [staging](https://stg.xvrqt.com). 
