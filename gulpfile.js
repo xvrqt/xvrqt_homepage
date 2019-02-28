@@ -7,6 +7,7 @@ const sourcemaps = require("gulp-sourcemaps");
 /* Packages required for transpiling TypeScript */
 const ts = require("gulp-typescript");
 const terser = require('gulp-terser');
+const inject_inline = require('gulp-inject-inline');
 
 /* Packages required for transpiling styles */
 const sass = require("gulp-sass");
@@ -137,6 +138,14 @@ gulp.task("copy:html",() => {
         .pipe(gulp.dest(dirs.dist));
 });
 
+gulp.task("inject:html", () => {
+    return gulp.src([
+            dirs.html_dist
+        ])
+        .pipe(inject_inline())
+        .pipe(gulp.dest(dirs.dist));
+});
+
 /* Copies the HTML source to dist/ and inject livereload.js into the pages */
 gulp.task("copy:html:dev", () => {
     return gulp.src([dirs.html_src])
@@ -147,10 +156,10 @@ gulp.task("copy:html:dev", () => {
 });
 
 /* Copies the HTML over to dist/ */
-gulp.task("html", gulp.series("clean:html", "copy:html"));
+gulp.task("html", gulp.series("clean:html", "copy:html", "inject:html"));
 
 /* Copies HTMl to dev and injects the livereload.js into the page. */
-gulp.task("html:dev", gulp.series("clean:html", "copy:html:dev"));
+gulp.task("html:dev", gulp.series("clean:html", "copy:html:dev", "inject:html"));
 
 
 /****************
