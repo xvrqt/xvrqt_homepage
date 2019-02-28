@@ -88,6 +88,14 @@ gulp.task("copy:humans", () => {
         .pipe(gulp.dest(dirs.dist));
 });
 
+/* Copies the sitemap.xml to dist/ */
+gulp.task("copy:sitemap", () => {
+    return gulp.src([
+            dirs.src + "/sitemap.*"
+        ])
+        .pipe(gulp.dest(dirs.dist));
+});
+
 /* Copies the favicon.ico to dist/ */
 gulp.task("copy:ico", () => {
     return gulp.src(dirs.src + dirs.fav_icon)
@@ -115,7 +123,7 @@ gulp.task("copy:livereload", () => {
 });
 
 /* Copy all the miscellaneous files, manifests and icons */
-gulp.task("copy:misc", gulp.parallel("copy:manifest", "copy:browserconfig", "copy:robots", "copy:humans", "copy:ico", "copy:icons", "copy:images"));
+gulp.task("copy:misc", gulp.parallel("copy:manifest", "copy:browserconfig", "copy:robots", "copy:humans", "copy:ico", "copy:icons", "copy:images", "copy:sitemap"));
 
 /**********
  *  HTML  *
