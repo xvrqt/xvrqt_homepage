@@ -6,9 +6,7 @@ const sourcemaps = require("gulp-sourcemaps");
 
 /* Packages required for transpiling TypeScript */
 const ts = require("gulp-typescript");
-const ts_project = ts.createProject("tsconfig.json");
-const tslint = require("gulp-tslint");
-const uglify = require("gulp-uglify");
+const terser = require('gulp-terser');
 
 /* Packages required for transpiling styles */
 const sass = require("gulp-sass");
@@ -171,56 +169,43 @@ gulp.task("clean:js:dev", () => {
     return del(arr);
 });
 
-/* Checks your code for neatness. See tslint.json for options. */ 
-gulp.task("lint:ts", () => {
-    return gulp.src([
-        	dirs.ts_src
-    	])
-        .pipe(tslint({
-            formatter: "verbose"
-        }))
-        .pipe(tslint.report())
-});
-
 /* Transpiles the TypeScript to ES6, minifies it, and moves it to dist/ */
-gulp.task("transpile:ts", () => {
-    /* Transpile the code */
-    var js_code = gulp.src([
-        dirs.ts_src
-   	])
-   	.pipe(sourcemaps.init())
-  	.pipe(ts_project(ts.reporter.fullReporter()));
-
+gulp.task("transpile:js", () => {
   	/* Minify the code */
-    return js_code.js
-        .pipe(uglify())
+    return gulp.src(dirs.js_src)
+        .pipe(terser({
+            ecma: 6,
+            toplevel: true,
+            mangle: true,
+            compress: {
+                booleans_as_integers: true,
+                drop_console: true
+            }
+        }))
         .pipe(sourcemaps.write(dirs.maps))
         .pipe(gulp.dest(dirs.dist));
 });
 
 /* Returns an error code if it fails to build. */
-gulp.task("transpile:ts:build", () => {
-    /* Transpile the code */
-    var js_code = gulp.src([
-        dirs.ts_src
-    ])
-    .pipe(sourcemaps.init())
-    .pipe(ts_project(ts.reporter.fullReporter()))
-    .on("error", (err) => {
-        console.log(err.toString());
-        process.exit(1);
-    });
-
-    /* Minify the code */
-    return js_code.js
-        .pipe(uglify())
+gulp.task("transpile:js:build", () => {
+      /* Minify the code */
+    return gulp.src(dirs.js_src)
+        .pipe(terser({
+            ecma: 6,
+            toplevel: true,
+            mangle: true,
+            compress: {
+                booleans_as_integers: true,
+                drop_console: true
+            }
+        }))
         .pipe(sourcemaps.write(dirs.maps))
         .pipe(gulp.dest(dirs.dist));
 });
 
 /* Lints, builds, minifies and copies the TypeScript files to dist/ */
-gulp.task("typescript:build", gulp.series("clean:js", "transpile:ts:build"));
-gulp.task("typescript:dev", gulp.series("clean:js:dev", "transpile:ts", "lint:ts"));
+gulp.task("typescript:build", gulp.series("clean:js", "transpile:js:build"));
+gulp.task("typescript:dev", gulp.series("clean:js:dev", "transpile:js"));
 
 /************
  *  Styles  *
