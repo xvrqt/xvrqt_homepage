@@ -1,13 +1,8 @@
 {
   "name": "xvrqt-homepage",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "xvrqt homepage",
-  "main": "server.js",
-  "scripts": {
-    "serve": "node server.js",
-    "build": "gulp",
-    "watch": "gulp watch"
-  },
+  "scripts": {},
   "keywords": [
     "typescript",
     "docker",
@@ -17,6 +12,7 @@
   "author": "xvrqt",
   "license": "BSD-3-Clause",
   "devDependencies": {
+    "consentacles": "0.0.6",
     "del": "^3.0.0",
     "express": "^4.16.4",
     "gulp": "^4.0.0",
@@ -41,8 +37,8 @@
     "typescript": "^3.2.2"
   },
   "consentacles": {
-      "name": "homepage",
-      "template": "blank",
-      "baseURL": "https://xvrqt.com"
+    "name": "homepage",
+    "template": "blank",
+    "baseURL": "https://xvrqt.com"
   }
 }
