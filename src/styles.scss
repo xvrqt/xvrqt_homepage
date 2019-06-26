@@ -38,18 +38,9 @@ html, body {
 /* Detect if WebP support is available to pick which background image to load. */
 body {
 	background-color: #202020;
-	&.no-webp {
-		background: url(img/bg.png);
-		@media only screen and (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-			background: url(img/bg@2X.png);
-		}
-	}
-
-	&.webp {
-		background: url(img/bg.webp);
-		@media only screen and (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-			background: url(img/bg@2X.webp);
-		}
+	background: url(images/bg.png);
+	@media only screen and (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+		background: url(images/bg@2X.png);
 	}
 }
 
@@ -89,10 +80,12 @@ $container-min-width: 320px;
 	    */
 		@include glitch("logo-glitch", 50, 100, 2);
 		
-		/* Add the surreal image effect to one of the logo images. */
-		picture:nth-child(1) img {
-			animation: surreal 3s linear infinite;
-			animation-fill-mode: both;
+		@media screen and (prefers-reduced-motion: no-preference) {
+			/* Add the surreal image effect to one of the logo images. */
+			picture:nth-child(1) img {
+				animation: surreal 3s linear infinite;
+				animation-fill-mode: both;
+			}
 		}
 	}
 

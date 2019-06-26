@@ -19,8 +19,8 @@
 /* Used to calclute the coore for the flicker and scanlines.
  * SUGGESTED: A dark color of your choice. Think #333 ;
 */
-$crt-screen-background:#202020;
-$screen-background:#202020;
+$crt-screen-background: #202020;
+$screen-background: #202020;
 
 /* How many distinct flicker states you wish to see. No point in changing this.
  * If you do, scale it with flicker-period. A low period and high number states
@@ -88,8 +88,10 @@ $crt-color-3: #007DA5;
 }
 
 .screen {
-  animation: turn-on 2.5s linear;
-  animation-fill-mode: forwards;
+    @media screen and (prefers-reduced-motion: no-preference) {
+        animation: turn-on 2.5s linear;
+        animation-fill-mode: forwards;
+    }
 }
 
 /* Wrapper div to apply the CRT screen effect */
@@ -112,8 +114,9 @@ $crt-color-3: #007DA5;
         pointer-events: none;
 
         background: transparentize($crt-screen-background,0.9);
-
-        animation: flicker $crt-flicker-period infinite;
+        @media screen and (prefers-reduced-motion: no-preference) {
+            animation: flicker $crt-flicker-period infinite;
+        }
     }
 }
 
@@ -154,8 +157,8 @@ $crt-color-3: #007DA5;
 */
 @mixin glitch($name, $frames, $duration, $waggle) {
   
-  $steps: $frames;
-  /* Animations must be generated at the root */
+    $steps: $frames;
+    /* Animations must be generated at the root */
     @at-root {
         /* Waggle left and waggle right */
         @for $i from 1 through 2 {
@@ -196,14 +199,20 @@ $crt-color-3: #007DA5;
 
     /* Offset to the right */
     picture:nth-child(2) img {
-        left: calc(50% + #{$waggle}px);
-        animation: #{$name}-anim-1 #{$duration}s infinite linear alternate-reverse;
+        left: calc(50%);
+        @media screen and (prefers-reduced-motion: no-preference) {
+            left: calc(50% + #{$waggle}px);
+            animation: #{$name}-anim-1 #{$duration}s infinite linear alternate-reverse;
+        }
     }
 
     /* Offset to the left */
     picture:nth-child(3) img {
-        left: calc(50% - #{$waggle}px);
-        animation: #{$name}-anim-2 #{$duration}s infinite linear alternate-reverse;
+        left: calc(50%);
+        @media screen and (prefers-reduced-motion: no-preference) {
+            left: calc(50% - #{$waggle}px);
+            animation: #{$name}-anim-2 #{$duration}s infinite linear alternate-reverse;
+        }
     }
 
     /* Used to size the parent correctly. */

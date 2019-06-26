@@ -1,9 +1,0 @@
-/* Modifications for the animation-less version of the home page */
-
-/* It's like the surreal animation, but static and with only two colors. */
-#simple {
-	picture.glow > img {
-		filter: drop-shadow(1px 1px 3px #DF1074) 
-				drop-shadow(-1px -1px 3px #047BA5),;
-	}
-}

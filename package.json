@@ -1,7 +1,7 @@
 {
-  "name": "ts-web-starter",
+  "name": "xvrqt-homepage",
   "version": "1.0.1",
-  "description": "A framework free starter to develop in TypeScript, compile, transpile SCSS and minify the result. Includes Dockerfile to user for development and deployment.",
+  "description": "xvrqt homepage",
   "main": "server.js",
   "scripts": {
     "serve": "node server.js",
@@ -39,5 +39,10 @@
     "through2": "^3.0.0",
     "tslint": "^5.11.0",
     "typescript": "^3.2.2"
+  },
+  "consentacles": {
+      "name": "homepage",
+      "template": "blank",
+      "baseURL": "https://xvrqt.com"
   }
 }
