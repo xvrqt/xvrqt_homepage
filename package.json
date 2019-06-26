@@ -2,7 +2,9 @@
   "name": "xvrqt-homepage",
   "version": "1.0.6",
   "description": "xvrqt homepage",
-  "scripts": {},
+  "scripts": {
+    "build": "consentacles build"
+  },
   "keywords": [
     "typescript",
     "docker",

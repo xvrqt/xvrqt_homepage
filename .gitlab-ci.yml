@@ -15,7 +15,7 @@ build:
     - docker
   script:
     - npm install
-    - consentacles build
+    - npm run build
   artifacts:
     paths:
       - dist/
