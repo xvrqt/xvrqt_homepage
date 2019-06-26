@@ -14,7 +14,7 @@
   "author": "xvrqt",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "consentacles": "^0.0.7",
+    "consentacles": "0.0.7",
     "del": "^3.0.0",
     "express": "^4.16.4",
     "gulp": "^4.0.0",
