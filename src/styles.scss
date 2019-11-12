@@ -48,7 +48,7 @@ $container-max-width: 414px;
 $container-min-width: 320px;
 
 /*Centered column to hold the content */
-.container {
+#container {
 	margin: 0 auto;
 	padding: 25px 0;
 	display: block;
@@ -66,7 +66,7 @@ $container-min-width: 320px;
 	}
 
 	/* Wrapper div adds the glitching scanline effect. */
-	.logo-glitch {
+	#logo {
 		/* Required to make the absolute positioning of the duplicate images
 		 * work.
 		*/
@@ -85,7 +85,7 @@ $container-min-width: 320px;
 	}
 
 	/* Class added to the wrapping <picture> tag for positioning. */
-	.title {
+	#title {
 		/* This puts it around breast height. */
 		width: 100%;
 
@@ -95,4 +95,26 @@ $container-min-width: 320px;
 	        		drop-shadow(-1px -1px 3px #047ba5);
 		}
 	}
+
+    #linked-list {
+        width: 100%;
+        text-align: center;
+
+        font-size: 1rem;
+        font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+
+        a {
+            color: #EFEFF4;
+            text-decoration: none;
+
+            margin: 10px auto;
+            display: block;
+
+            :visited {
+                color: inherit;
+            }
+        }
+    }
 }
+
+
