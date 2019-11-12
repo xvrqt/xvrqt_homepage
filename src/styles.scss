@@ -35,7 +35,6 @@ html, body {
 	padding: 0px;
 }
 
-/* Detect if WebP support is available to pick which background image to load. */
 body {
 	background-color: #202020;
 	background: url(images/bg.png);
@@ -51,10 +50,11 @@ $container-min-width: 320px;
 /*Centered column to hold the content */
 .container {
 	margin: 0 auto;
-	padding: 5px 0;
+	padding: 25px 0;
 	display: block;
 
 	position: relative;
+    text-align: center;
 
 	width: 100%;
 	max-width: $container-max-width;
@@ -62,7 +62,7 @@ $container-min-width: 320px;
 
 	/* Images should be constrained to the width of the container. */
 	img {
-		max-width: 100%;
+		max-width: 50%;
 	}
 
 	/* Wrapper div adds the glitching scanline effect. */
@@ -74,11 +74,6 @@ $container-min-width: 320px;
 
 		/* Image should fit inside the viewport at all times */
 		max-height: 100vh;
-		
-		/* Generates the actual glitch effect.
-		 * DEPENDS: crt.scss
-	    */
-		@include glitch("logo-glitch", 50, 100, 2);
 		
 		@media screen and (prefers-reduced-motion: no-preference) {
 			/* Add the surreal image effect to one of the logo images. */
@@ -92,10 +87,7 @@ $container-min-width: 320px;
 	/* Class added to the wrapping <picture> tag for positioning. */
 	.title {
 		/* This puts it around breast height. */
-		top: 60%;
 		width: 100%;
-		display: block;
-		position: absolute;
 
 		img {
 			/* Distorted retro 3D effect, changed to fit color scheme. */
