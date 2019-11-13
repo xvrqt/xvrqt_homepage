@@ -112,9 +112,12 @@ $container-min-width: 320px;
             display: block;
 
             @media screen and (max-width: 600px) {
-                margin: 5px auto;
                 height: 48px;
+                margin: 10px auto;
                 background: rgba(32, 32, 32, 0.75);
+
+                line-height: 48px;
+                font-weight: bolder;
             }
 
             :visited {
