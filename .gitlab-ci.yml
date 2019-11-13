@@ -29,6 +29,8 @@ deploy_staging:
     - mkdir -p /etc/nginx/sites-enabled
     - cp nginx.dev.conf /etc/nginx/sites-enabled/homepage
     - cp -r dist/* /var/www/homepage/
+    - cp -p brotli.sh /var/www/homepage/brotli.sh
+    - ./brotli.sh
     - sudo nginx -t
     - sudo /etc/init.d/nginx reload
   environment:
@@ -43,8 +45,8 @@ deploy_production:
     - shell
   script:
     - scp -p nginx.prod.conf root@static-01:/etc/nginx/sites-enabled/homepage
-    - scp -p brotli.sh root@static-01:/var/www/homepage/brotli.sh
     - scp -pr dist/* root@static-01:/var/www/homepage/
+    - scp -p brotli.sh root@static-01:/var/www/homepage/brotli.sh
     - ssh root@static-01 'cd /var/www/homepage && nginx -t && ./brotli.sh && service nginx reload'
   environment:
     name: production
