@@ -25,11 +25,13 @@ deploy_staging:
   tags:
     - shell
   script:
+    - rm -rf /var/www/homepage
     - mkdir -p /var/www/homepage
     - mkdir -p /etc/nginx/sites-enabled
     - cp nginx.dev.conf /etc/nginx/sites-enabled/homepage
     - cp -r dist/* /var/www/homepage/
     - cp -p brotli.sh /var/www/homepage/brotli.sh
+    - cd /var/www/homepage
     - ./brotli.sh
     - sudo nginx -t
     - sudo /etc/init.d/nginx reload
