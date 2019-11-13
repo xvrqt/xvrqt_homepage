@@ -47,9 +47,10 @@ deploy_production:
     - shell
   script:
     - scp -p nginx.prod.conf root@static-01:/etc/nginx/sites-enabled/homepage
+    - cp brotli.sh dist/brotli.sh
+    - ./dist/brotli.sh
     - scp -pr dist/* root@static-01:/var/www/homepage/
-    - scp -p brotli.sh root@static-01:/var/www/homepage/brotli.sh
-    - ssh root@static-01 'cd /var/www/homepage && nginx -t && ./brotli.sh && service nginx reload'
+    - ssh root@static-01 'nginx -t && service nginx reload'
   environment:
     name: production
     url: https://xvrqt.com
