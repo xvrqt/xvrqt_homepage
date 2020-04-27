@@ -23,7 +23,7 @@ jobs:
         with:
           host: 66.170.190.145
           user: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.STATIC_02_PRIV_KEY }}
           scp: nginx.prod.conf root@68.183.251.49:/etc/nginx/sites-enabled/homepage
       
       - name: 'Copy Site to Prod'
@@ -31,7 +31,7 @@ jobs:
         with:
           host: 66.170.190.145
           user: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.STATIC_02_PRIV_KEY }}
           ssh_before: |
             mkdir -p /var/www/homepage
           scp: ./* ubuntu@66.170.190.145:/var/www/homepage/
