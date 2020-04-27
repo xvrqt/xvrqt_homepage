@@ -21,18 +21,18 @@ jobs:
       - name: 'Copy NGINX config to Prod'
         uses: alinz/ssh-scp-action@v0.1.1
         with:
-          host: ${{ secrets.STATIC_02_IP }}
-          user: ${{ secrets.STATIC_02_USER }}
+          host: 66.170.190.145
+          user: nginx
           key: ${{ secrets.PRIVATE_KEY }}
           scp: nginx.prod.conf root@68.183.251.49:/etc/nginx/sites-enabled/homepage
       
       - name: 'Copy Site to Prod'
         uses: alinz/ssh-scp-action@v0.1.1
         with:
-          host: ${{ secrets.STATIC_02_IP }}
-          user: ${{ secrets.STATIC_02_USER }}
+          host: 66.170.190.145
+          user: nginx
           key: ${{ secrets.PRIVATE_KEY }}
           ssh_before: |
             mkdir -p /var/www/homepage
-          scp: ./* ${{ secrets.STATIC_02_USER }}@${{ secrets.STATIC_02_IP }}:/var/www/homepage/
+          scp: ./* nginx@66.170.190.145:/var/www/homepage/
 
