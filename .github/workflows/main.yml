@@ -1,0 +1,38 @@
+name: Deploy Homepage to Production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      
+      - name: 'Brotli compress html, css and js assets'
+        uses: Charlesworth/compress-action@1.0.0
+
+      - name: 'Copy NGINX config to Prod'
+        uses: alinz/ssh-scp-action@v0.1.1
+        with:
+          host: ${{ secrets.STATIC_02_IP }}
+          user: ${{ secrets.STATIC_02_USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          scp: nginx.prod.conf root@68.183.251.49:/etc/nginx/sites-enabled/homepage
+      
+      - name: 'Copy Site to Prod'
+        uses: alinz/ssh-scp-action@v0.1.1
+        with:
+          host: ${{ secrets.STATIC_02_IP }}
+          user: ${{ secrets.STATIC_02_USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          ssh_before: |
+            mkdir -p /var/www/homepage
+          scp: ./* ${{ secrets.STATIC_02_USER }}@${{ secrets.STATIC_02_IP }}:/var/www/homepage/
+
