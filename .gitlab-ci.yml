@@ -1,59 +1,19 @@
 stages:
-    - build
     - deploy
-
-image: node:11.4
-
-cache:
-  paths:
-    - node_modules/
-    - dist/
-
-build:
-  stage: build
-  tags:
-    - docker
-  script:
-    - npm install
-    - npm run build
-  artifacts:
-    paths:
-      - dist/
-      
-deploy_staging:
-  stage: deploy
-  tags:
-    - shell
-  script:
-    - rm -rf /var/www/homepage
-    - mkdir -p /var/www/homepage
-    - mkdir -p /etc/nginx/sites-enabled
-    - cp nginx.dev.conf /etc/nginx/sites-enabled/homepage
-    - cp -r dist/* /var/www/homepage/
-    - cp -p brotli.sh /var/www/homepage/brotli.sh
-    - cd /var/www/homepage
-    - ./brotli.sh
-    - sudo nginx -t
-    - sudo /etc/init.d/nginx reload
-  environment:
-    name: staging
-    url: https://stg.xvrqt.com
-  only:
-  - master
   
 deploy_production:
-  stage: deploy
-  tags:
-    - shell
-  script:
-    - scp -p nginx.prod.conf root@static-01:/etc/nginx/sites-enabled/homepage
-    - cp brotli.sh dist/brotli.sh
-    - ./dist/brotli.sh
-    - scp -pr dist/* root@static-01:/var/www/homepage/
-    - ssh root@static-01 'nginx -t && service nginx reload'
-  environment:
-    name: production
-    url: https://xvrqt.com
-  when: manual
-  only:
-  - tags
+    stage: deploy
+    tags:
+        - shell, xvrqt-static-01
+    script:
+        - cp -p nginx.conf /etc/nginx/sites-enabled/homepage
+        - cp -pr src/* /var/www/homepage/
+        - nginx -t && service nginx reload
+    environment:
+        name: production
+        url: https://xvrqt.com
+    when: manual
+      only:
+          - master
+          - tags
+
