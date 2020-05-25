@@ -7,7 +7,7 @@ deploy_production:
         - shell, xvrqt-static-01
     script:
         - cp -p nginx.conf /etc/nginx/sites-enabled/homepage
-        - mkdir -p /var/www/homepage
+        - mkdir /var/www/homepage
         - cp -pr src/* /var/www/homepage/
         - nginx -t && service nginx reload
     environment:
