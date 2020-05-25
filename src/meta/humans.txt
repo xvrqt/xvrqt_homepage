@@ -1,9 +1,0 @@
-# humanstxt.org
-
-# THANKS
-	
-	xvrqt - @xvrqt
-
-# TECHNOLOGY
-
-    CSS3, HTML5, SCSS, NODEJS, NPM, DOCKER, TYPESCRIPT
