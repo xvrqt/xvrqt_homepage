@@ -9,7 +9,7 @@ deploy_production:
         - cp -p nginx.conf /etc/nginx/sites-enabled/homepage
         - mkdir -p /var/www/homepage
         - cp -pr src/* /var/www/homepage/
-        - nginx -t && service nginx reload
+        - sudo nginx -t && sudo service nginx reload
     environment:
         name: production
         url: https://xvrqt.com
