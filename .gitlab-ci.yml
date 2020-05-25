@@ -13,7 +13,3 @@ deploy_production:
         name: production
         url: https://xvrqt.com
     when: manual
-      only:
-          - master
-          - tags
-
