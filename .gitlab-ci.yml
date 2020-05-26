@@ -1,7 +1,8 @@
 stages:
     - deploy
-  
-deploy_production:
+    - certify
+
+deploy:
     stage: deploy
     tags:
         - shell, xvrqt-static-01
@@ -14,3 +15,21 @@ deploy_production:
         name: production
         url: https://xvrqt.com
     when: manual
+
+certify:
+    stage: certify
+    tags:
+        - shell, xvrqt-static-01
+    script:
+        - certbot --nginx -d xvrqt.com < /etc/nginx/certbot_prompt.txt
+        - certbot --nginx -d crates.xvrqt.com < /etc/nginx/certbot_prompt.txt
+        - certbot --nginx -d discord.xvrqt.com < /etc/nginx/certbot_prompt.txt
+        - certbot --nginx -d github.xvrqt.com < /etc/nginx/certbot_prompt.txt
+        - certbot --nginx -d gitlab.xvrqt.com < /etc/nginx/certbot_prompt.txt
+        - certbot --nginx -d npm.xvrqt.com < /etc/nginx/certbot_prompt.txt
+        - certbot --nginx -d twitch.xvrqt.com < /etc/nginx/certbot_prompt.txt
+        - certbot --nginx -d twitter.xvrqt.com < /etc/nginx/certbot_prompt.txt
+    environment:
+        name: production
+        url: https://xvrqt.com
+    when: on_success
