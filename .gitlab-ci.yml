@@ -1,16 +1,28 @@
 stages:
     - deploy
-  
-deploy_production:
+    - deploy_config 
+
+deploy:
+    stage: deploy
+    tags:
+        - shell, xvrqt-static-01
+    script:
+        - mkdir -p /var/www/homepage
+        - cp -r src/* /var/www/homepage/
+    environment:
+        name: production
+        url: https://xvrqt.com
+    when: manual
+
+deploy_config:
     stage: deploy
     tags:
         - shell, xvrqt-static-01
     script:
         - cp nginx.conf /etc/nginx/sites-enabled/homepage
-        - mkdir -p /var/www/homepage
-        - cp -r src/* /var/www/homepage/
         - sudo nginx -t && sudo service nginx reload
     environment:
         name: production
         url: https://xvrqt.com
     when: manual
+
