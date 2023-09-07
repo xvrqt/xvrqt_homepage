@@ -124,7 +124,7 @@
     filter: drop-shadow(5030537756.63px 5778188586.66px 3px #35327f) drop-shadow(58075742349px 75477535427px 3px #d84083); } }
 
 /* This page is meant to take up the entire viewport. Vertical scrolling 
- * optional for ver small devices. (They should be viewing the static page).
+ * optional for very small devices. (They should be viewing the static page).
 */
 html, body {
   width: 100%;
