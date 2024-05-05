@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#202020">
+    <meta name="theme-color" content="#111">
     
     <!-- Icons -->
     <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
@@ -32,11 +32,25 @@
     <div id="container"> 
 
       <!-- Header Image -->
-        <picture id="logo">
+      <div id="logo">
+      <picture id="dupe_1" class="screen dupe">
+          <source srcset="images/xvrqt.webp 1x" type="image/webp" />
+          <source srcset="images/xvrqt.png 1x"  type="image/png" />
+          <img src="images/xvrqt.png" alt="Torn, armless torso of a gynoid staring at viewer" />
+        </picture>
+
+      <picture id="dupe_2" class="screen dupe">
+          <source srcset="images/xvrqt.webp 1x" type="image/webp" />
+          <source srcset="images/xvrqt.png 1x"  type="image/png" />
+          <img src="images/xvrqt.png" alt="Torn, armless torso of a gynoid staring at viewer" />
+        </picture>
+
+      <picture id="original" class="screen">
           <source srcset="images/xvrqt.webp 1x" type="image/webp" />
           <source srcset="images/xvrqt.png 1x"  type="image/png" />
           <img src="images/xvrqt.png" class="surreal" alt="Torn, armless torso of a gynoid staring at viewer" />
         </picture>
+      </div>
 
       <!-- Text Logo -->
       <picture id="title">
@@ -56,8 +70,10 @@
           <a href="https://crates.io/users/xvrqt">crates</a>
           <a href="https://github.com/xvrqt">github</a>
           <a href="https://npmjs.com/~xvrqt">npm</a>
-          <a href="https://twitch.tv/xvrqt">twitch</a>
-          <a href="https://twitter.com/xvrqt">twitter</a>
+	  <span class="section">--- code ---</span>
+          <a title="I really need to self host again" href="https://github.com/xvrqt">github</a>
+          <a title="Rust crates I've built; almost not embarassing." href="https://crates.io/users/xvrqt">crates</a>
+          <a title="In a different life I guess I also made shitty packages for NPM" href="https://npmjs.com/~xvrqt">npm</a>
       </div>
       </nav>
     </div>
