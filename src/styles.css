@@ -1,142 +1,165 @@
-html, body {
-  margin: 0px;
-  padding: 0px; 
+body,
+html {
+    margin: 0;
+    padding: 0;
 }
 
 /* Tiling Background */
 body {
-  background-color: #202020;
-  background: url(images/bg.png); }
-  @media only screen and (min-device-pixel-ratio: .1) {
+    background-color: #202020;
+    background: url("images/bg.png");
+}
+@media only screen and (min-device-pixel-ratio: .1) {
     body {
-      background: url(images/bg@2x.png); }
+        background: url("images/bg@2x.png");
+    }
 }
 
 /* Allow for minor scaling depending on screen size */
 /*Centered column to hold the content */
 #container {
-	display: flex;
-	flex-wrap: nowrap;
-	flex-direction: column;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
 
-	margin: 5% auto;
-	align-items: center; 
-	align-content: flex-start;
-	justify-content: center; 
+    margin: 5% auto;
+    align-items: center;
+    align-content: flex-start;
+    justify-content: center;
 
-  min-width: 320px;
-  max-width: 1024px;
-  /* Class added to the wrapping <picture> tag for positioning. */ 
+    min-width: 320px;
+    max-width: 1024px;
+    /* Class added to the wrapping <picture> tag for positioning. */
 }
-  #container img {
-    max-width: 100%; }
-    @media screen and (prefers-reduced-motion: no-preference) {
-      #container #logo {
-        /* Add the surreal image effect to one of the logo images. */ }
-        #container #logo picture:nth-child(1) img {
-          animation: surreal 3s linear infinite;
-          animation-fill-mode: both; } }
-    #container #title img {
-      /* Distorted retro 3D effect, changed to fit color scheme. */
-      filter: drop-shadow(1px 1px 3px #df1074) drop-shadow(-1px -1px 3px #047ba5); }
-    a {
-	    text-align: center;
-      color: #EFEFF4;
+#container img {
+    max-width: 100%;
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+    #container #logo {
+        /* Add the surreal image effect to one of the logo images. */
+    }
+    #container #logo picture:nth-child(1) img {
+        animation: surreal 3s linear infinite;
+        animation-fill-mode: both;
+    }
+}
+#container #title img {
+    /* Distorted retro 3D effect, changed to fit color scheme. */
+    filter: drop-shadow(1px 1px 3px #df1074) drop-shadow(-1px -1px 3px #047ba5);
+}
+a {
+    text-align: center;
+    color: #EFEFF4;
     font-size: 1rem;
-    font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace; 
-      text-decoration: none;
-      max-width: 256px;
-      margin: 10px auto;
-      display: block; }
-      @media screen and (max-width: 600px) {
- a {
-          height: 48px;
-          margin: 10px auto;
-          background: rgba(32, 32, 32, 0.75);
-          line-height: 48px;
-          font-weight: bolder; } }
-      a:visited {
-        color: #B294BB; }
+    font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+    text-decoration: none;
+    max-width: 256px;
+    margin: 10px auto;
+    display: block;
+}
+@media screen and (max-width: 600px) {
+    a {
+        height: 48px;
+        margin: 10px auto;
+        background: rgba(32, 32, 32, 0.75);
+        line-height: 48px;
+        font-weight: bolder;
+    }
+}
+a:visited {
+    color: #B294BB;
+}
 
 /* Link on the 404 page back to */
 #not-found {
-  width: 100%;
-  margin: 50px auto;
-  text-align: center; }
-  #not-found a {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+#not-found a {
     color: #EFEFF4;
     display: block;
     font-size: 1rem;
     font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
-    text-decoration: none; }
-    #not-found a :visited {
-      color: inherit; }
+    text-decoration: none;
+}
+#not-found a:visited {
+    color: inherit;
+}
 
 /* Simulates a CRT screen turning on. */
 @keyframes turn-on {
-	0% {
-		transform: scale(1, 0.8) translate3d(0, 0, 0);
-		filter: brightness(30);
-		opacity: 1;
-	}
+    0% {
+        transform: scale(1, 0.8) translate3d(0, 0, 0);
+        filter: brightness(30);
+        opacity: 1;
+    }
 
-	3.5% {
-		transform: scale(1, 0.8) translate3d(0, 100%, 0);
-	}
+    3.5% {
+        transform: scale(1, 0.8) translate3d(0, 100%, 0);
+    }
 
-	3.6% {
-		transform: scale(1, 0.8) translate3d(0, -100%, 0);
-		opacity: 1;
-	}
+    3.6% {
+        transform: scale(1, 0.8) translate3d(0, -100%, 0);
+        opacity: 1;
+    }
 
-	9% {
-		transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
-		filter: brightness(30);
-		opacity: 0.1;
-	}
+    9% {
+        transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+        filter: brightness(30);
+        opacity: 0.1;
+    }
 
-	11% {
-		transform: scale(1, 1) translate3d(0, 0, 0);
-		filter: contrast(0) brightness(0);
-		opacity: 0;
-	}
+    11% {
+        transform: scale(1, 1) translate3d(0, 0, 0);
+        filter: contrast(0) brightness(0);
+        opacity: 0;
+    }
 
-	100% {
-		transform: scale(1, 1) translate3d(0, 0, 0);
-		filter: contrast(1) brightness(1) saturate(1);
-		opacity: 1;
-	}
+    100% {
+        transform: scale(1, 1) translate3d(0, 0, 0);
+        filter: contrast(1) brightness(1) saturate(1);
+        opacity: 1;
+    }
 }
 
 /* Only enable the animation for users that haven't disabled non-essential motion */
 @media screen and (prefers-reduced-motion: no-preference) {
-	.screen {
-		animation: turn-on 2.5s linear;
-		animation-fill-mode: forwards;
-	}
+    .screen {
+        animation: turn-on 2.5s linear;
+        animation-fill-mode: forwards;
+    }
 }
 
 /* Blends and rotates these colors around an image's alpha mask. Gives the image
  * a flickering, otherworldy glow.
 */
 @keyframes surreal {
-  0% {
-    filter: drop-shadow(2px 0px 3px #35327f) drop-shadow(-2.0px 0.0px 3px #d84083); }
-  12.5% {
-    filter: drop-shadow(1.41421px 1.41421px 3px #472f7a) drop-shadow(-1.41421px -1.41421px 3px #c04484); }
-  25% {
-    filter: drop-shadow(0px 2px 3px #5d2d7b) drop-shadow(0.0px -2.0px 3px #c14384); }
-  37.5% {
-    filter: drop-shadow(-1.41421px 1.41421px 3px #742a77) drop-shadow(1.41425px -1.41421px 3px #954783); }
-  50% {
-    filter: drop-shadow(-2.0px 0.0px 3px #982676) drop-shadow(2.0006px 0.00017px 3px #6e4786); }
-  62.5% {
-    filter: drop-shadow(-1.41421px -1.41421px 3px #ad2275) drop-shadow(1.42211px 1.41666px 3px #514887); }
-  75% {
-    filter: drop-shadow(0.0px -2.0px 3px #d31674) drop-shadow(0.07862px 2.02707px 3px #3c4787); }
-  87.5% {
-    filter: drop-shadow(1.41425px -1.41421px 3px #df1074) drop-shadow(-0.78786px 1.65184px 3px #224887); }
-  100% {
-    filter: drop-shadow(2.0006px 0.00017px 3px #35327f) drop-shadow(2.15036px 1.72068px 3px #d84083); }
+    0% {
+        filter: drop-shadow(2px 0px 3px #35327f) drop-shadow(-2.0px 0.0px 3px #d84083);
+    }
+    12.5% {
+        filter: drop-shadow(1.41421px 1.41421px 3px #472f7a) drop-shadow(-1.41421px -1.41421px 3px #c04484);
+    }
+    25% {
+        filter: drop-shadow(0px 2px 3px #5d2d7b) drop-shadow(0.0px -2.0px 3px #c14384);
+    }
+    37.5% {
+        filter: drop-shadow(-1.41421px 1.41421px 3px #742a77) drop-shadow(1.41425px -1.41421px 3px #954783);
+    }
+    50% {
+        filter: drop-shadow(-2.0px 0.0px 3px #982676) drop-shadow(2.0006px 0.00017px 3px #6e4786);
+    }
+    62.5% {
+        filter: drop-shadow(-1.41421px -1.41421px 3px #ad2275) drop-shadow(1.42211px 1.41666px 3px #514887);
+    }
+    75% {
+        filter: drop-shadow(0.0px -2.0px 3px #d31674) drop-shadow(0.07862px 2.02707px 3px #3c4787);
+    }
+    87.5% {
+        filter: drop-shadow(1.41425px -1.41421px 3px #df1074) drop-shadow(-0.78786px 1.65184px 3px #224887);
+    }
+    100% {
+        filter: drop-shadow(2.0006px 0.00017px 3px #35327f) drop-shadow(2.15036px 1.72068px 3px #d84083);
+    }
 }
-
