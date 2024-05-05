@@ -34,6 +34,7 @@
 	}
 }
 
+/* Only enable the animation for users that haven't disabled non-essential motion */
 @media screen and (prefers-reduced-motion: no-preference) {
 	.screen {
 		animation: turn-on 2.5s linear;
@@ -41,19 +42,8 @@
 	}
 }
 
-/* Easy way to rotate SASS lists */
-/* Reverses a SASS list */
-/* Returns $value^$exp */
-/* Calculates the factorial of a number */
-/* Yum */
-/* Converts degrees to radians */
-/* Standard (approximate) trig functions in your CSS */
-/* Additional imports at the end of this document for the 404 page. */
 /* Blends and rotates these colors around an image's alpha mask. Gives the image
  * a flickering, otherworldy glow.
- * DEPENDS: utility.scss
- *  -- For the trigometric functions that calculate the shadow offset in a 
- *  -- clockwise manner.
 */
 @keyframes surreal {
   0% {
@@ -74,54 +64,7 @@
     filter: drop-shadow(1.41425px -1.41421px 3px #df1074) drop-shadow(-0.78786px 1.65184px 3px #224887); }
   100% {
     filter: drop-shadow(2.0006px 0.00017px 3px #35327f) drop-shadow(2.15036px 1.72068px 3px #d84083); }
-  112.5% {
-    filter: drop-shadow(1.42211px 1.41666px 3px #472f7a) drop-shadow(22.14106px 9.18439px 3px #c04484); }
-  125% {
-    filter: drop-shadow(0.07862px 2.02707px 3px #5d2d7b) drop-shadow(117.15203px 54.8736px 3px #c14384); }
-  137.5% {
-    filter: drop-shadow(-0.78786px 1.65184px 3px #742a77) drop-shadow(521.34508px 269.55051px 3px #954783); }
-  150% {
-    filter: drop-shadow(2.15036px 1.72068px 3px #982676) drop-shadow(2091.45809px 1163.84319px 3px #6e4786); }
-  162.5% {
-    filter: drop-shadow(22.14106px 9.18439px 3px #ad2275) drop-shadow(7696.6711px 4564.87439px 3px #514887); }
-  175% {
-    filter: drop-shadow(117.15203px 54.8736px 3px #d31674) drop-shadow(26232.32444px 16507.32747px 3px #3c4787); }
-  187.5% {
-    filter: drop-shadow(521.34508px 269.55051px 3px #df1074) drop-shadow(83463.24704px 55549.6127px 3px #224887); }
-  200% {
-    filter: drop-shadow(2091.45809px 1163.84319px 3px #35327f) drop-shadow(249627.6537px 175242.84657px 3px #d84083); }
-  212.5% {
-    filter: drop-shadow(7696.6711px 4564.87439px 3px #472f7a) drop-shadow(706068.61194px 521527.86956px 3px #c04484); }
-  225% {
-    filter: drop-shadow(26232.32444px 16507.32747px 3px #5d2d7b) drop-shadow(1898563.48895px 1472141.06325px 3px #c14384); }
-  237.5% {
-    filter: drop-shadow(83463.24704px 55549.6127px 3px #742a77) drop-shadow(4875255.42893px 3960109.24961px 3px #954783); }
-  250% {
-    filter: drop-shadow(249627.6537px 175242.84657px 3px #982676) drop-shadow(12002866.3766px 10193999.7444px 3px #6e4786); }
-  262.5% {
-    filter: drop-shadow(706068.61194px 521527.86956px 3px #ad2275) drop-shadow(28431558.63px 25202219.9192px 3px #514887); }
-  275% {
-    filter: drop-shadow(1898563.48895px 1472141.06325px 3px #d31674) drop-shadow(64995175.163px 60032058.4955px 3px #3c4787); }
-  287.5% {
-    filter: drop-shadow(4875255.42893px 3960109.24961px 3px #df1074) drop-shadow(143784859.106px 138170497.771px 3px #224887); }
-  300% {
-    filter: drop-shadow(12002866.3766px 10193999.7444px 3px #35327f) drop-shadow(308571113.1px 308062419.98px 3px #d84083); }
-  312.5% {
-    filter: drop-shadow(28431558.63px 25202219.9192px 3px #472f7a) drop-shadow(643806398.917px 666871071.378px 3px #c04484); }
-  325% {
-    filter: drop-shadow(64995175.163px 60032058.4955px 3px #5d2d7b) drop-shadow(1308474108.83px 1404472947.98px 3px #c14384); }
-  337.5% {
-    filter: drop-shadow(143784859.106px 138170497.771px 3px #742a77) drop-shadow(2595094191.89px 2883067638.98px 3px #954783); }
-  350% {
-    filter: drop-shadow(308571113.1px 308062419.98px 3px #982676) drop-shadow(5030537756.63px 5778188586.66px 3px #6e4786); }
-  362.5% {
-    filter: drop-shadow(643806398.917px 666871071.378px 3px #ad2275) drop-shadow(9545085085.96px 11323549051.1px 3px #514887); }
-  375% {
-    filter: drop-shadow(1308474108.83px 1404472947.98px 3px #d31674) drop-shadow(17751020078.5px 21728355512.3px 3px #3c4787); }
-  387.5% {
-    filter: drop-shadow(2595094191.89px 2883067638.98px 3px #df1074) drop-shadow(32394303500.6px 40876312662.5px 3px #224887); }
-  400% {
-    filter: drop-shadow(5030537756.63px 5778188586.66px 3px #35327f) drop-shadow(58075742349px 75477535427px 3px #d84083); } }
+}
 
 /* This page is meant to take up the entire viewport. Vertical scrolling 
  * optional for very small devices. (They should be viewing the static page).
@@ -131,14 +74,16 @@ html, body {
   height: 100%;
   min-height: 100vh;
   margin: 0px;
-  padding: 0px; }
+  padding: 0px; 
+}
 
 body {
   background-color: #202020;
   background: url(images/bg.png); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  @media only screen and (min-device-pixel-ratio: .1) {
     body {
-      background: url(images/bg@2X.png); } }
+      background: url(images/bg@2x.png); }
+}
 
 /* Allow for minor scaling depending on screen size */
 /*Centered column to hold the content */
@@ -149,7 +94,7 @@ body {
   position: relative;
   text-align: center;
   width: 100%;
-  max-width: 414px;
+  max-width: 512x;
   min-width: 320px;
   /* Images should be constrained to the width of the container. */
   /* Wrapper div adds the glitching scanline effect. */
