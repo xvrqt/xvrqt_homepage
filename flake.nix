@@ -23,7 +23,7 @@
         # Check if both the website service is enabled, and this specific site is enabled.
         cfgcheck = config.services.websites.enable && config.services.websites.sites.${pkgName}.enable;
         # Website url
-        domain = config.services.websites.sites.${pkgName}.url;
+        domain = config.services.websites.sites.${pkgName}.domain;
       in {
         # Create the option to enable this site, and set its domain name
         options = {
@@ -32,7 +32,7 @@
               sites = {
                 homepage = {
                   enable = lib.mkEnableOption "xvrqt homepage (static website)";
-                  url = lib.mkOption {
+                  domain = lib.mkOption {
                     type = lib.types.str;
                     default = "xvrqt.com";
                     example = "gateway.xvrqt.com";
