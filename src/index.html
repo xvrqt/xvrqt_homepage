@@ -1,93 +1,169 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <!-- Title and Description -->
     <title>xvrqt</title>
-    <meta name="description" content="xvrqt">
-    <meta name="author" content="xvrqt">
+    <meta name="description" content="xvrqt" />
+    <meta name="author" content="xvrqt" />
 
     <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#111">
-    
-    <!-- Icons -->
-    <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#111" />
 
-    <link rel="manifest" href="/site.webmanifest">
+    <!-- Icons -->
+    <link rel="icon" href="/icons/favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
+
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Our single style sheet -->
-    <link rel="stylesheet" href="/styles.css">
-
+    <link rel="stylesheet" href="/styles.css" />
   </head>
 
   <body class="screen">
     <main>
-    <div id="container"> 
+      <div id="container">
+        <!-- Header Image -->
+        <div id="logo">
+          <picture id="dupe_1" class="screen dupe">
+            <source srcset="images/xvrqt.webp 1x" type="image/webp" />
+            <source srcset="images/xvrqt.png 1x" type="image/png" />
+            <img
+              src="images/xvrqt.png"
+              alt="Torn, armless torso of a gynoid staring at viewer"
+            />
+          </picture>
 
-      <!-- Header Image -->
-      <div id="logo">
-      <picture id="dupe_1" class="screen dupe">
-          <source srcset="images/xvrqt.webp 1x" type="image/webp" />
-          <source srcset="images/xvrqt.png 1x"  type="image/png" />
-          <img src="images/xvrqt.png" alt="Torn, armless torso of a gynoid staring at viewer" />
+          <picture id="dupe_2" class="screen dupe">
+            <source srcset="images/xvrqt.webp 1x" type="image/webp" />
+            <source srcset="images/xvrqt.png 1x" type="image/png" />
+            <img
+              src="images/xvrqt.png"
+              alt="Torn, armless torso of a gynoid staring at viewer"
+            />
+          </picture>
+
+          <picture id="original" class="screen">
+            <source srcset="images/xvrqt.webp 1x" type="image/webp" />
+            <source srcset="images/xvrqt.png 1x" type="image/png" />
+            <img
+              src="images/xvrqt.png"
+              class="surreal"
+              alt="Torn, armless torso of a gynoid staring at viewer"
+            />
+          </picture>
+        </div>
+
+        <!-- Text Logo -->
+        <picture id="title">
+          <source
+            srcset="
+              images/title/xvrqt.webp    1x,
+              images/title/xvrqt@2x.webp 1.25x,
+              images/title/xvrqt@3x.webp 2.25x
+            "
+            type="image/webp"
+          />
+          <source
+            srcset="
+              images/title/xvrqt.png    1x,
+              images/title/xvrqt@2x.png 1.25x,
+              images/title/xvrqt@3x.png 2.25x
+            "
+            type="image/png"
+          />
+          <img
+            src="images/title/xvrqt@3x.png"
+            class="title"
+            alt="XVRQT written in retro block lettering"
+          />
         </picture>
 
-      <picture id="dupe_2" class="screen dupe">
-          <source srcset="images/xvrqt.webp 1x" type="image/webp" />
-          <source srcset="images/xvrqt.png 1x"  type="image/png" />
-          <img src="images/xvrqt.png" alt="Torn, armless torso of a gynoid staring at viewer" />
-        </picture>
+        <nav>
+          <div id="linked-list">
+            <a
+              title="Tired of being brutally poor"
+              href="https://ko-fi.com/xvrqt"
+              >support me</a
+            >
+            <span class="section">--- fun ---</span>
+            <a
+              title="See what the future holds in Moomin's Orb"
+              href="https://orb.xvrqt.com"
+              >orb</a
+            >
+            <span class="section">--- code ---</span>
+            <a
+              title="I really need to self host again"
+              href="https://github.com/xvrqt"
+              >github</a
+            >
+            <a
+              title="Rust crates I've built; almost not embarassing"
+              href="https://crates.io/users/xvrqt"
+              >crates</a
+            >
+            <a
+              title="In a different life I guess I also made shitty packages for NPM"
+              href="https://npmjs.com/~xvrqt"
+              >npm</a
+            >
+            <span class="section">--- socials ---</span>
+            <a title="Here until I self host." href="https://tech.lgbt/@xvrqt"
+              >fediverse</a
+            >
+            <a
+              title="Here until I self host."
+              href="https://discord.gg/tYkGby2aQb"
+              >discord</a
+            >
+            <a
+              title="We will never play a single game together."
+              href="https://steamcommunity.com/id/xvrqt"
+              >steam</a
+            >
+            <a
+              title="I haven't logged on in an age, and I'll delete it when it's taken over by an American corporation."
+              href="https://tiktok.com/@xvrqt"
+              >tiktok</a
+            >
+            <a
+              title="Rarely do I post and interact on here. I mostly use third party tools to scrape anything I need."
+              href="https://youtube.com/channel/UC-GuXn8_q6yLrkYI-ZUyX2w"
+              >youtube</a
+            >
 
-      <picture id="original" class="screen">
-          <source srcset="images/xvrqt.webp 1x" type="image/webp" />
-          <source srcset="images/xvrqt.png 1x"  type="image/png" />
-          <img src="images/xvrqt.png" class="surreal" alt="Torn, armless torso of a gynoid staring at viewer" />
-        </picture>
+            <span class="section">--- graphics ---</span>
+            <a
+              title="My class projects for the Univeristy of Utah's Intro to Computer Graphics course."
+              href="https://cs4600.xvrqt.com"
+              >CS 4600</a
+            >
+          </div>
+        </nav>
       </div>
-
-      <!-- Text Logo -->
-      <picture id="title">
-        <source srcset="images/title/xvrqt.webp 1x, 
-                        images/title/xvrqt@2x.webp 1.25x, 
-                        images/title/xvrqt@3x.webp 2.25x"
-                type="image/webp" />
-        <source srcset="images/title/xvrqt.png 1x, 
-                        images/title/xvrqt@2x.png 1.25x, 
-                        images/title/xvrqt@3x.png 2.25x" 
-                type="image/png" />
-        <img src="images/title/xvrqt@3x.png" class="title" alt="XVRQT written in retro block lettering" />
-      </picture>
-
-      <nav>
-      <div id="linked-list">
-          <a title="Tired of being brutally poor" href="https://ko-fi.com/xvrqt">support me</a>
-	  <span class="section">--- fun ---</span>
-          <a title="See what the future holds in Moomin's Orb" href="https://orb.xvrqt.com">orb</a>
-	  <span class="section">--- code ---</span>
-          <a title="I really need to self host again" href="https://github.com/xvrqt">github</a>
-          <a title="Rust crates I've built; almost not embarassing" href="https://crates.io/users/xvrqt">crates</a>
-          <a title="In a different life I guess I also made shitty packages for NPM" href="https://npmjs.com/~xvrqt">npm</a>
-	  <span class="section">--- socials ---</span>
-          <a title="Here until I self host." href="https://tech.lgbt/@xvrqt">fediverse</a>
-          <a title="Here until I self host." href="https://discord.gg/tYkGby2aQb">discord</a>
-          <a title="We will never play a single game together." href="https://steamcommunity.com/id/xvrqt">steam</a>
-          <a title="I haven't logged on in an age, and I'll delete it when it's taken over by an American corporation." href="https://tiktok.com/@xvrqt">tiktok</a>
-          <a title="Rarely do I post and interact on here. I mostly use third party tools to scrape anything I need." href="https://youtube.com/channel/UC-GuXn8_q6yLrkYI-ZUyX2w">youtube</a>
-
-	  <span class="section">--- graphics ---</span>
-          <a title="My class projects for the Univeristy of Utah's Intro to Computer Graphics course." href="https://cs4600.xvrqt.com">CS 4600</a>
-      </div>
-      </nav>
-    </div>
     </main>
   </body>
-
 </html>
-
